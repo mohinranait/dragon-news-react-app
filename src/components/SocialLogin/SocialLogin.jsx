@@ -1,16 +1,18 @@
 import { IoLogoFacebook, IoLogoGoogle } from 'react-icons/io5';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import useAuth from '../../Hooks/useAuth';
 
 const SocialLogin = () => {
     const {googleLogin,FacebookLogin} = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+
     const handleSocialLogin = async (media) => {
         try{
             await media();
             toast.success("Login Success ")
-            navigate('/')
+            navigate( location?.state ? location.state : '/')
         }catch(err){
             toast.error(err.message)
         }

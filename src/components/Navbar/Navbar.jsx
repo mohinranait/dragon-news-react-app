@@ -20,7 +20,7 @@ const Navbar = () => {
                             <nav>
                                 <ul className='flex items-center justify-center gap-6'>
                                     <li><NavLink to="/" className='text-[#706F6F] text-lg font-normal'>Home</NavLink></li>
-                                    <li><NavLink className='text-[#706F6F] text-lg font-normal'>About</NavLink></li>
+                                    <li><NavLink to="/user" className='text-[#706F6F] text-lg font-normal'>Dashboard</NavLink></li>
                                     <li><NavLink className='text-[#706F6F] text-lg font-normal'>Contact</NavLink></li>
                                 </ul>
                             </nav>

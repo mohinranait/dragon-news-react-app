@@ -1,11 +1,16 @@
 
 import {  IoLogoFacebook,  IoLogoGoogle } from 'react-icons/io5';
 import useAuth from '../../Hooks/useAuth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SidebarSocialLogin = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
     const { googleLogin, FacebookLogin,} = useAuth()
-    const handleSocialLogin = (media) => {
-        media();
+    const handleSocialLogin = async (media) => {
+        await media();
+        navigate(location?.state ? location?.state : '/');
+
     }
     return (
         <>

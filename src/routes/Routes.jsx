@@ -8,11 +8,13 @@ import Register from '../pages/Register/Register';
 import CategoryWish from '../pages/CategoryWish/CategoryWish';
 import SecondLayout from '../Layouts/SecondLayout';
 import PrivateRoutes from './PrivateRoutes';
+import ErrorPage from '../pages/ErrorPage/ErrorPage';
 
 const myRoutes = createBrowserRouter([
     {
         path: "/",
         element : <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children : [
             {
                 path : "/",

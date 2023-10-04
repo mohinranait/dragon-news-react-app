@@ -1,23 +1,36 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAuth from '../../Hooks/useAuth';
 
 const Login = () => {
     const {loginUser} = useAuth();
-
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
+
+        if( password.length == 0){
+            toast.error("Password can't be empty value")
+            return;
+        }
+
+       
+        if( email.length == 0 ){
+            toast.error("Email is required");
+            return;
+        }
+
         try {
-            const user = await loginUser(email, password);
+            await loginUser(email, password);
             toast.success("Login Success");
             e.target.reset();
-            console.log(user.user);
+            navigate(location?.state ? location.state : '/');
         } catch (error) {
             toast.error(error.message);
         }
