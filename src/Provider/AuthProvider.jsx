@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types'
 import auth from '../services/firebase/firebase';
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { FacebookAuthProvider, GoogleAuthProvider, TwitterAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 const googleProvider = new GoogleAuthProvider();
 const FacebookProvider = new FacebookAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
 
 
 export const AuthContext = createContext(null);
@@ -37,6 +38,12 @@ const AuthProvider = ({children}) => {
         return signInWithPopup(auth, FacebookProvider)
     }
 
+    // Twitter login
+    const twitterLogin = () => {
+        setLoading(true);
+        return signInWithPopup(auth, twitterProvider);
+    }
+
     // Signout user
     const logoutUser = () => {
         setLoading(true)
@@ -57,7 +64,6 @@ const AuthProvider = ({children}) => {
         const unSubscribe =  onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false)
-            console.log(currentUser);
         });
         return () => {
             unSubscribe();
@@ -71,6 +77,7 @@ const AuthProvider = ({children}) => {
         logoutUser,
         googleLogin,
         FacebookLogin,
+        twitterLogin,
         loading,
         user,
     }
