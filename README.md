@@ -24,7 +24,8 @@
 ## Using plugins
 - Alert / React hot toast: https://react-hot-toast.com/ 
 - React markue / Text slider: https://www.react-fast-marquee.com/
-- React Rating Install: https://www.npmjs.com/package/react-rating - React Rating Demo: https://dreyescat.github.io/react-rating/
+- React Rating Install: https://www.npmjs.com/package/react-rating 
+- React Rating Demo: https://dreyescat.github.io/react-rating/
 - Date formate / Momentjs: https://momentjs.com/
 - Firebase: https://firebase.google.com/
 - React Icon: https://react-icons.github.io/react-icons/
